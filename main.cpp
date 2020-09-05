@@ -45,9 +45,6 @@ unique_ptr <vector <shared_ptr <Test>>> make() {
     vector <shared_ptr <Test>> v;
     unique_ptr <vector <shared_ptr <Test>>> vec_ptr = make_unique <vector <shared_ptr <Test>>> (v);
     return vec_ptr;
-    
-    // can also do: return make_unique <vector <shared_ptr <Test>>> ();
-    // () represents constructor for the vector
 }
 
 void fill (vector <shared_ptr<Test>> &vec, int num) {
@@ -56,9 +53,8 @@ void fill (vector <shared_ptr<Test>> &vec, int num) {
         cout << "Enter data point [" << i << "]:";
         cin >> temp;
         
-        shared_ptr<Test> p1 = make_shared <Test> (temp);
-        vec.push_back(p1);
-        // In one step can do: return vec.push_back (make_shared <Test> (temp));
+        shared_ptr<Test> p1 = make_shared <Test> (temp); // Putting pointer on heap
+        vec.push_back(p1); // Adding pointer to the back of the vector
     }
 }
 
